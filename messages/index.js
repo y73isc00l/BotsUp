@@ -7,16 +7,6 @@ https://docs.botframework.com/en-us/node/builder/chat/dialogs/#waterfall
 var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
 
-var natural=require('natural');
-classifier=new natural.BayesClassifier();
-classifier.addDocument('i would like to buy fdfssfg','buy');
-classifier.addDocument('woul sell fssljjf','sell');
-classifier.addDocument('How much would u sell this to me for','sell');
-classifier.train();
-console.log(classifier.getClassifications('i am short silver'));
-classifier.save('classifier.json',function(err,classifier){
-    //the classifier is saved to classifier.json file!
-});
 
 var useEmulator = (process.env.NODE_ENV == 'development');
 
