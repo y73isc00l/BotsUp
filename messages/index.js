@@ -32,7 +32,7 @@ bot.dialog('/', [
         classifier.addDocument('woul sell fssljjf','sell');
         classifier.addDocument('How much would u sell this to me for','sell');
         classifier.train();
-        builder.Prompts.text(session, "classifier.classify('i am short silver')");
+        builder.Prompts.text(session, classifier.classify('i am short silver'));
         
     },
     function (session, results) {
