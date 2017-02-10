@@ -8,14 +8,11 @@ var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
 var natural=require('natural');
 var classifier=new natural.BayesClassifier();
-classifier.addDocument('i would like to buy fdfssfg','buy');
-classifier.addDocument('woul sell fssljjf','sell');
-classifier.addDocument('How much would u sell this to me for','sell');
-classifier.train();
-console.log(classifier.getClassifications('i am short silver'));
-classifier.save('classifier.json',function(err,classifier){
-    //the classifier is saved to classifier.json file!
-});
+
+// console.log(classifier.classify('i am short silver'));
+// classifier.save('classifier.json',function(err,classifier){
+//     //the classifier is saved to classifier.json file!
+// });
 
 
 var useEmulator = (process.env.NODE_ENV == 'development');
@@ -31,7 +28,11 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', [
     function (session) {
-        builder.Prompts.text(session, "Hello... What should i call you?");
+        classifier.addDocument('i would like to buy fdfssfg','buy');
+        classifier.addDocument('woul sell fssljjf','sell');
+        classifier.addDocument('How much would u sell this to me for','sell');
+        classifier.train();
+        builder.Prompts.text(session, "classifier.classify('i am short silver')");
         
     },
     function (session, results) {
