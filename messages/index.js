@@ -21,9 +21,8 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', [
     function (session) {
-        if(!session.userData.name){
         builder.Prompts.text(session, "Hello... What should i call you?");
-        }
+        
     },
     function (session, results) {
         session.userData.name = results.response;
